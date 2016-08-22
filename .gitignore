@@ -1,5 +1,5 @@
 Homestead.yaml
 Homestead.json
-.env
+#.env
 .gitattributes
 readme.md
