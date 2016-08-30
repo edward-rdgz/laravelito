@@ -8,7 +8,7 @@ use App\Note;
 
 class NotesTest extends TestCase
 {
-    use WithoutMiddleware; // Se utiliza para post.
+    use WithoutMiddleware; // Se utiliza para post. Desactiva el middleware.
 
     /**
      * A basic test example.

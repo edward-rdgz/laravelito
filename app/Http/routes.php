@@ -13,17 +13,20 @@
 
 use \App\Note;
 
+
 // Home
 Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Manda un array a la vista.
 Route::get('notes', function () {
 	$notes = Note::all();
 	//dd($notes); // Helper
-	return view('notes', compact('notes'));
+	return view('notes/list', compact('notes'));
 });
+
 
 // Crea una vista preliminar.
 Route::get('notes/create', function () {
@@ -32,15 +35,18 @@ Route::get('notes/create', function () {
 	['notes' => 'create']; // Devuelve un Json
 });
 
-// POST
-Route::post('notes', function () {
-	return 'Creating a note';
+
+//
+Route::get('notes/create', function (){ 
+	return view('notes/create');
 });
+
 
 // Solo recibe números. Se comento para usar la variable $slug opcional.
 /*Route::get('notes/{note}', function ($note) {
 	return $note;
 })->where('note', '[0-9]+');*/
+
 
 // Recibe dos parametros.
 Route::get('notes/{note}/{slug}', function ($note, $slug) {
@@ -49,6 +55,7 @@ Route::get('notes/{note}/{slug}', function ($note, $slug) {
 
 })->where('note', '[0-9]+');
 
+
 // Recibe dos parametros, uno es opcional
 Route::get('notes/{note}/{slug?}', function ($note, $slug =  null) {
 	//return $note;
@@ -56,3 +63,8 @@ Route::get('notes/{note}/{slug?}', function ($note, $slug =  null) {
 
 })->where('note', '[0-9]+');
 
+
+// POST
+Route::post('notes', function () {
+	return 'Creating a note';
+});
